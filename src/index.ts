@@ -1,26 +1,20 @@
 import "dotenv/config";
-
-///////////////////////////////////////////////////////////////////////////
-
 import fastifyUnderpressure from "@fastify/under-pressure";
 import fastifyRatelimit from "@fastify/rate-limit";
 import fastifyCompress from "@fastify/compress";
 import fastifyProxy from "@fastify/http-proxy";
 import fastifyHelmet from "@fastify/helmet";
-
-import { robloxRanges } from "./roblox";
 import fs from "node:fs/promises";
 import fastify from "fastify";
 import path from "node:path";
 
 const LOCAL_IP = ["localhost", "::1", "127.0.0.1", "::ffff:"];
-const PROJECT_PATH = "https://github.com/CordXApp/Proxy";
+const PROJECT_PATH = "https://discord.gg/r78bkXWKYS";
 
 (async () => {
   const config = JSON.parse(
     await fs.readFile(path.join(__dirname, "../", "config.json"), "utf-8")
   ) as {
-    onlyRobloxServer: boolean;
     placeIds: string[];
     apiKeys: string[];
   };
@@ -46,7 +40,7 @@ const PROJECT_PATH = "https://github.com/CordXApp/Proxy";
     maxRssBytes: 100000000,
     maxEventLoopUtilization: 0.98,
     retryAfter: 50,
-    message: "Under pressure!",
+    message: "Proxy is under pressure!",
   });
 
   app.register(fastifyRatelimit, {
@@ -73,37 +67,15 @@ const PROJECT_PATH = "https://github.com/CordXApp/Proxy";
         delete headers["proxy-authorization"];
       }
 
-      if (!config.onlyRobloxServer) return done();
-
       const ip = request.ip;
 
       if (LOCAL_IP.includes(ip)) return done();
-
-      if (config.placeIds.length > 0) {
-        const headers = request.headers;
-        const placeId = headers["roblox-id"];
-
-        if (!placeId || !config.placeIds.includes(placeId as string)) {
-          reply
-            .code(403)
-            .send({ error: "You are not allowed to use this proxy." });
-          return done();
-        }
-      }
-
-      if (!robloxRanges.check(ip)) {
-        reply
-          .code(403)
-          .send({ error: "You are not allowed to use this proxy." });
-        return done();
-      }
 
       return done();
     },
     replyOptions: {
       rewriteRequestHeaders: (_, headers) => {
-        headers["user-agent"] = `DiscordProxy/${pkg.version} (${PROJECT_PATH})`;
-        delete headers["roblox-id"];
+        headers["user-agent"] = `CordXProxy/${pkg.version} (${PROJECT_PATH})`;
         return headers;
       },
     },
