@@ -1,0 +1,31 @@
+{
+    "name": "@cordxapp/proxy",
+    "version": "1.0.0",
+    "description": "High performance (?) and non tracking proxy server for Discord",
+    "main": "dist/index.js",
+    "private": true,
+    "scripts": {
+      "build": "del-cli dist && tsc",
+      "start": "node ."
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/CordXApp/Proxy.git"
+    },
+    "author": "Toxic Dev",
+    "dependencies": {
+      "@fastify/compress": "^6.4.0",
+      "@fastify/helmet": "^11.0.0",
+      "@fastify/http-proxy": "^9.2.1",
+      "@fastify/rate-limit": "^8.0.3",
+      "@fastify/under-pressure": "^8.3.0",
+      "dotenv": "^16.3.1",
+      "fastify": "^4.22.1"
+    },
+    "devDependencies": {
+      "@types/node": "^20.5.7",
+      "@types/fastify-rate-limit": "^2.1.0",
+      "del-cli": "^5.1.0",
+      "typescript": "^5.2.2"
+    }
+  }
