@@ -1,3 +1,4 @@
+import "dotenv/config";
 import { FastifyRequest, FastifyReply, HookHandlerDoneFunction } from 'fastify';
 import { IncomingHttpHeaders } from 'http';
 
@@ -9,11 +10,16 @@ async function loadPackage() {
   return pkg;
 };
 
-function preHandler(apiKeys: Set<string>) {
+function preHandler() {
+
+  const apiKeys = new Set(process.env.API_KEYS?.split(','))
+
   return (req: FastifyRequest, res: FastifyReply, done: HookHandlerDoneFunction) => {
     if (apiKeys.size > 0) {
       const headers = req.headers;
       const apiKey = req.headers["authorization"];
+
+      console.log(apiKey)
 
       if (!apiKey || !apiKeys.has(apiKey as string)) {
         res.code(403).send({
@@ -25,7 +31,7 @@ function preHandler(apiKeys: Set<string>) {
         return done();
       }
 
-      delete headers["proxy-authorization"];
+      delete headers["authorization"];
     }
 
     const ip = req.ip;

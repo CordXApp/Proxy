@@ -28,7 +28,7 @@ const PROJECT_PATH = "https://discord.gg/r78bkXWKYS";
     upstream: "https://discord.com",
     prefix: "/api",
     rewritePrefix: "/api",
-    preHandler: ProxyFunctions.preHandler(new Set(process.env.API_KEYS?.split(','))),
+    preHandler: ProxyFunctions.preHandler(),
     replyOptions: {
       rewriteRequestHeaders: ProxyFunctions.rewriteRequestHeaders(pkg),
     },
