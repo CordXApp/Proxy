@@ -19,7 +19,7 @@ CordX Proxy is designed to be easy to set up and use, making it an ideal choice 
 ## Environment Variables
 Before you start, you need to configure certain environment variables that the application depends on:
 
-- `API_KEYS`: This should be a comma-separated list of API keys. These keys are used to authenticate clients that are allowed to use the proxy. Each client should send their API key in the `proxy-authorization` header of their requests.
+- `API_KEYS`: This should be a comma-separated list of API keys. These keys are used to authenticate clients that are allowed to use the proxy. Each client should send their API key in the `authorization` header of their requests.
 
 - `PORT`: This is the port number that the proxy server will listen on. If you don't specify a port, the server will default to `10501`.
 
