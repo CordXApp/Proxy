@@ -82,7 +82,7 @@ Follow these steps to install and run the proxy server:
 
 ## Notice:
 - If you do not specify any api keys in your environment variables your proxy will be accessible by the world, meaning anyone can use it
-to proxy requests to discord ***this is not recommended for security and abuse purposes**
+to proxy requests to discord ***this is not recommended for security and abuse purposes***
 
 
 ---
@@ -97,7 +97,7 @@ curl -X GET 'http://localhost:10501/api/your-endpoint' -H 'authorization: your-a
 
 - Replace `'your-endpoint'` with the Discord API endpoint you want to access, and 'your-api-key' with one of the API keys you've set in your environment variables.
 
-- The proxy server uses the `authorization` header to authenticate requests. This header should contain one of the API keys specified in the API_KEYS environment variable. If the `authorization`` header is missing or contains an invalid API key, the server will respond with a 401 Unauthorized status.
+- The proxy server uses the `authorization` header to authenticate requests. This header should contain one of the API keys specified in the API_KEYS environment variable. If the `authorization` header is missing or contains an invalid API key, the server will respond with a 401 Unauthorized status.
 
 - The server also uses rate limiting to control the number of requests each client can make in a certain time frame. If a client exceeds the rate limit, the server will respond with a 429 Too Many Requests status. The response headers will include information about the rate limit, such as the maximum number of requests allowed (x-ratelimit-limit), the number of requests remaining in the current time window (x-ratelimit-remaining), and the time when the rate limit will reset (x-ratelimit-reset).
 
