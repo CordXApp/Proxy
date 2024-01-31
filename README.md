@@ -1,18 +1,18 @@
 # CordX Proxy
-CordXProxy is a robust HTTP proxy server designed specifically for Discord's API. Built on Fastify, a high-performance web framework for Node.js, CordX Proxy offers advanced features such as rate limiting and system pressure monitoring to ensure optimal performance and reliability. 
+CordX Proxy is a robust HTTP proxy server designed specifically for Discord's API. Built on Fastify, a high-performance web framework for Node.js, CordX Proxy offers advanced features such as rate limiting and system pressure monitoring to ensure optimal performance and reliability. 
 
 ---
 
 ## Features
 - **Helmet**: A middleware that enhances application security by setting various HTTP headers. These headers can help mitigate common attack vectors such as Cross-Site Scripting (XSS), clickjacking, and other code injection attacks. By default, Helmet enables a set of secure headers, but it can be configured to suit the specific needs of your application.
 
-- **Rate Limiting**: CordXProxy implements a rate limiting strategy to control the number of requests a client can make within a certain time frame. This not only prevents potential abuse but also ensures the application stays within Discord's API rate limits, reducing the risk of being temporarily blocked due to excessive requests.
+- **Rate Limiting**: CordX Proxy implements a rate limiting strategy to control the number of requests a client can make within a certain time frame. This not only prevents potential abuse but also ensures the application stays within Discord's API rate limits, reducing the risk of being temporarily blocked due to excessive requests.
 
-- **Under Pressure Monitoring**: CordXProxy uses the 'under-pressure' plugin to continuously monitor and measure the performance of the Node.js process. It tracks event loop delay, memory consumption, and CPU utilization, providing valuable insights into system performance and helping maintain application responsiveness.
+- **Under Pressure Monitoring**: CordX Proxy uses the 'under-pressure' plugin to continuously monitor and measure the performance of the Node.js process. It tracks event loop delay, memory consumption, and CPU utilization, providing valuable insights into system performance and helping maintain application responsiveness.
 
 - **HTTP Proxy**: Acts as an intermediary for requests from clients seeking resources from Discord's API. It handles each client's request by forwarding it to the API, then returns the response from the API back to the client. This allows the proxy to manage rate limits, log requests, and add additional security measures.
 
-CordXProxy is designed to be easy to set up and use, making it an ideal choice for developers looking to interact with Discord's API in a controlled and efficient manner.
+CordX Proxy is designed to be easy to set up and use, making it an ideal choice for developers looking to interact with Discord's API in a controlled and efficient manner.
 
 ---
 

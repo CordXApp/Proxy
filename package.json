@@ -1,6 +1,6 @@
 {
   "name": "@cordxapp/proxy",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Fastify-based HTTP proxy for Discord's API, with rate limiting and under-pressure features.",
   "main": "dist/src/index.js",
   "private": true,
